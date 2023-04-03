@@ -60,21 +60,16 @@ export class RunsService {
     if (currentRun === null) {
       throw new NotFoundException('Can not find Run with id:' + id);
     }
-    // const updatedRun = {
-    //   ...currentRun,
-    //   ...payload,
-    // };
-    // this.update(updatedRun);
+    const updatedRun = {
+      ...currentRun,
+      ...payload,
+    };
+    this.update(updatedRun);
 
-    // return updatedRun;
-
-    const retValue = this[id];
-    this[id] = payload;
-    return retValue;
-
+    return updatedRun;
   }
-    // update(updatedRun: Run) {
-    //     const index = this.runs.findIndex((item) => item.id === updatedRun.id);
-    // this.runs[index] = updatedRun;
-    // }
+    update(updatedRun: Run) {
+        const index = this.runs.findIndex((item) => item.id === updatedRun.id);
+    this.runs[index] = updatedRun;
+    }
 }
